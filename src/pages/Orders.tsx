@@ -94,11 +94,18 @@ export default function Orders() {
                 </DialogHeader>
                 <div className="space-y-3">
                   <p className="text-xs text-muted-foreground">{formatDate(order.created_at)}</p>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {order.order_items.map((item) => (
-                      <div key={item.id} className="flex justify-between text-sm">
-                        <span>{item.quantity}x {item.product_name}</span>
-                        <span>{formatRupiah(item.total_price)}</span>
+                      <div key={item.id} className="space-y-0.5">
+                        <div className="flex justify-between text-sm">
+                          <span>{item.quantity}x {item.product_name}</span>
+                          <span>{formatRupiah(item.total_price)}</span>
+                        </div>
+                        {item.notes && (
+                          <p className="text-xs text-primary italic pl-4">
+                            Catatan: {item.notes}
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>

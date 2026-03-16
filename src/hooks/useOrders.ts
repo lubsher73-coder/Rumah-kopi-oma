@@ -6,6 +6,7 @@ export interface CartItem {
   product_name: string;
   unit_price: number;
   quantity: number;
+  notes?: string;
 }
 
 export function useOrders(limit = 50) {
@@ -93,6 +94,7 @@ export function useCreateOrder() {
         quantity: item.quantity,
         unit_price: item.unit_price,
         total_price: item.unit_price * item.quantity,
+        notes: item.notes || null,
       }));
 
       const { error: itemsErr } = await supabase.from('order_items').insert(orderItems);
