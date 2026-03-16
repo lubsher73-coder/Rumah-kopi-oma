@@ -102,7 +102,7 @@ export default function Products() {
         await updateProduct.mutateAsync({ id: editId, ...productData });
         toast({ title: 'Produk diperbarui' });
       } else {
-        await createProduct.mutateAsync(parsed);
+        await createProduct.mutateAsync(productData);
         toast({ title: 'Produk ditambahkan' });
       }
       resetForm();
