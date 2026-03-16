@@ -90,8 +90,16 @@ export default function Products() {
         is_available: isAvailable,
       });
 
+      const productData = {
+        name: parsed.name,
+        price: parsed.price,
+        description: parsed.description || null,
+        category_id: parsed.category_id || null,
+        is_available: parsed.is_available,
+      };
+
       if (editId) {
-        await updateProduct.mutateAsync({ id: editId, ...parsed });
+        await updateProduct.mutateAsync({ id: editId, ...productData });
         toast({ title: 'Produk diperbarui' });
       } else {
         await createProduct.mutateAsync(parsed);

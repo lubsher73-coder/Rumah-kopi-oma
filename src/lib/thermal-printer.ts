@@ -135,7 +135,7 @@ export async function printReceipt(data: ReceiptData): Promise<void> {
     throw new Error('Bluetooth tidak didukung di browser ini. Gunakan Chrome.');
   }
 
-  const device = await navigator.bluetooth.requestDevice({
+  const device = await nav.bluetooth.requestDevice({
     filters: [{ services: ['000018f0-0000-1000-8000-00805f9b34fb'] }],
     optionalServices: ['000018f0-0000-1000-8000-00805f9b34fb'],
   });
