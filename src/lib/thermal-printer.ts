@@ -130,7 +130,8 @@ function concat(arrays: Uint8Array[]): Uint8Array {
 }
 
 export async function printReceipt(data: ReceiptData): Promise<void> {
-  if (!navigator.bluetooth) {
+  const nav = navigator as any;
+  if (!nav.bluetooth) {
     throw new Error('Bluetooth tidak didukung di browser ini. Gunakan Chrome.');
   }
 
